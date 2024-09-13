@@ -1,0 +1,8 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0  # 指定版本号
+    hooks:
+      - id: trailing-whitespace  # 删除行末的多余空格
+      - id: end-of-file-fixer    # 确保文件以换行符结束
+      - id: check-yaml           # 检查 YAML 文件的语法
+      - id: check-added-large-files  # 防止提交过大的文件
