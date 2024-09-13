@@ -18,7 +18,7 @@ declare -A keycode_map=(
 current_space=$(yabai -m query --spaces --space | jq -r ".index")
 
 # 等待0.1秒
-sleep 0.2 
+sleep 0.2
 
 if [ -n "$current_space" ]; then
     if [ "$current_space" -ne 2 ]; then

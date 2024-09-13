@@ -22,4 +22,3 @@ A common use case for DesktopJumper is during interactions with ChatGPT. For ins
 The script defines keycodes for desktop switching and uses `yabai` and `osascript` to change the desktop. It saves the current desktop state, switches to the target desktop (e.g., desktop 3 for ChatGPT), and allows switching back to the previous desktop.
 
 For introduction in Chinese, please visit the [中文README](./README_zh-CN.md).
-
