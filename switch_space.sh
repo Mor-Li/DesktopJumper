@@ -18,7 +18,7 @@ declare -A keycode_map=(
 current_space=$(yabai -m query --spaces --space | jq -r ".index")
 
 # 等待0.1秒
-sleep 0.2 
+sleep 0.2
 
 if [ -n "$current_space" ]; then
     if [ "$current_space" -ne 3 ]; then
@@ -54,13 +54,13 @@ fi
 # ------------下面是一些开发时候的经验总结，不是必须看的----------------
 # 默认的话skhd是homebrew启动的，但是这样你看不到日志，所以建议直接在终端启动skhd
 # 建议同时粘贴下面两行命令到终端
-# pkill skhd 
+# pkill skhd
 # skhd &
 # 这样你就可以看到日志了，方便debug
 # 此外，可以结合https://en.key-test.ru/
 # 进行键码的测试，方便你自定义快捷键，以及到底按快捷键的时候背后发生了什么
 # Debug后的结论： skhd是个好东西，他是很准确的。很适合做快捷键
-# 只是切换桌面这件事apple script有点慢，所以有时候会有点卡顿，或者有时候会失效。 
+# 只是切换桌面这件事apple script有点慢，所以有时候会有点卡顿，或者有时候会失效。
 
 # 2024-08-04日更新，我终于知道了这个bug为什么产生
 # 当你按下alt+space的时候，skhd会调用zsh脚本，然后zsh脚本会调用osascript
