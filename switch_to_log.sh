@@ -21,13 +21,13 @@ current_space=$(yabai -m query --spaces --space | jq -r ".index")
 sleep 0.2
 
 if [ -n "$current_space" ]; then
-    if [ "$current_space" -ne 4 ]; then
-        echo "Debug: Not on space 4, saving current space and switching to space 4 (Chrome)."
+    if [ "$current_space" -ne 2 ]; then
+        echo "Debug: Not on space 2, saving current space and switching to space 2 (Chrome log)."
         echo $current_space > /tmp/last_space
-        # 切换到桌面 4
-        osascript -e "tell application \"System Events\" to key code 21 using {control down}" > /dev/null
-        echo "Debug: Switched to space 4 (Chrome)."
-    elif [ "$current_space" -eq 4 ]; then
+        # 切换到桌面 2
+        osascript -e "tell application \"System Events\" to key code 19 using {control down}" > /dev/null
+        echo "Debug: Switched to space 2 (Chrome log)."
+    elif [ "$current_space" -eq 2 ]; then
         if [ -f /tmp/last_space ]; then
             previous_space=$(cat /tmp/last_space)
             echo "Debug: Previous space recorded as $previous_space."
