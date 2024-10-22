@@ -3,7 +3,7 @@
 # 导入 keycode_map
 source /Users/limo/Documents/GithubRepo/DesktopJumper/keycode_map.sh
 
-# 右移到下一个桌面（非阻塞执行，但按顺序依次执行）
+# 右移到下一个桌面
 move_right() {
     osascript -e 'tell application "System Events" to key code 124 using {control down}' > /dev/null
 }
@@ -14,10 +14,18 @@ switch_to_target_desktop() {
     yabai -m space --focus "$desktop" > /dev/null
 }
 
-# 延迟执行的函数，按顺序延迟一段时间后再调用 move_right
-delayed_move_right() {
-    local delay=$1
-    (sleep $delay; move_right) &
+# 检查当前桌面是否已经切换完成
+wait_for_desktop_switch() {
+    local target=$1
+    while :; do
+        # 使用 yabai 查询当前活动桌面
+        current_desktop=$(yabai -m query --spaces --space | jq '.index')
+        if [ "$current_desktop" -eq "$target" ]; then
+            break
+        fi
+        # 等待一小段时间再进行检查
+        sleep 0.1
+    done
 }
 
 # 获取当前显示器的数量
@@ -25,9 +33,6 @@ num_displays=$(yabai -m query --displays | jq '. | length')
 
 # 默认情况下的总桌面数设置为 14
 total_desktops=14  
-
-# 计算延迟时间的基础值
-base_delay=0.5  # 每次右移的延迟时间（秒）
 
 if [ "$num_displays" -eq 1 ]; then
     num_right_moves=$((total_desktops - 1))  # 需要向右移动的次数
@@ -38,7 +43,10 @@ if [ "$num_displays" -eq 1 ]; then
 
     # 右移 num_right_moves 次
     for ((i = 1; i <= num_right_moves; i++)); do
-        delayed_move_right $(echo "$i * $base_delay" | bc)  # 按顺序延迟执行
+        # 执行右移操作
+        move_right
+        # 等待桌面切换完成
+        wait_for_desktop_switch $((target_desktop + i))
     done
 
 elif [ "$num_displays" -eq 2 ]; then
@@ -50,7 +58,8 @@ elif [ "$num_displays" -eq 2 ]; then
 
     # 第一个显示器移动9次（右移到第10个桌面）
     for ((i = 1; i <= 9; i++)); do
-        delayed_move_right $(echo "$i * $base_delay" | bc)
+        move_right
+        wait_for_desktop_switch $((target_desktop + i))
     done
 
     # 切换到第二个显示器的第一个桌面（假设为第11个桌面）
@@ -59,7 +68,8 @@ elif [ "$num_displays" -eq 2 ]; then
 
     # 第二个显示器上再移动3次（到第14个桌面）
     for ((i = 1; i <= 3; i++)); do
-        delayed_move_right $(echo "$i * $base_delay" | bc)
+        move_right
+        wait_for_desktop_switch $((target_desktop + i))
     done
 
 elif [ "$num_displays" -eq 3 ]; then
@@ -71,7 +81,8 @@ elif [ "$num_displays" -eq 3 ]; then
 
     # 第一个显示器移动4次（到第5个桌面）
     for ((i = 1; i <= 4; i++)); do
-        delayed_move_right $(echo "$i * $base_delay" | bc)
+        move_right
+        wait_for_desktop_switch $((target_desktop + i))
     done
 
     # 切换到第二个显示器的第一个桌面（第6个桌面）
@@ -80,7 +91,8 @@ elif [ "$num_displays" -eq 3 ]; then
 
     # 第二个显示器移动4次（到第10个桌面）
     for ((i = 1; i <= 4; i++)); do
-        delayed_move_right $(echo "$i * $base_delay" | bc)
+        move_right
+        wait_for_desktop_switch $((target_desktop + i))
     done
 
     # 切换到第三个显示器的第一个桌面（第11个桌面）
@@ -89,7 +101,8 @@ elif [ "$num_displays" -eq 3 ]; then
 
     # 第三个显示器移动4次（到第14个桌面）
     for ((i = 1; i <= 4; i++)); do
-        delayed_move_right $(echo "$i * $base_delay" | bc)
+        move_right
+        wait_for_desktop_switch $((target_desktop + i))
     done
 
 else
@@ -102,6 +115,7 @@ else
 
     # 右移 num_right_moves 次
     for ((i = 1; i <= num_right_moves; i++)); do
-        delayed_move_right $(echo "$i * $base_delay" | bc)
+        move_right
+        wait_for_desktop_switch $((target_desktop + i))
     done
 fi
