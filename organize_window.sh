@@ -12,6 +12,12 @@ move_right() {
 switch_to_target_desktop() {
     local desktop=$1
     yabai -m space --focus "$desktop" > /dev/null
+# 注意：在脚本中使用 sleep 等待时，Yabai 在 sleep 的这段时间内不会主动完成窗口的重新布局或响应。
+# 这意味着，在 sleep 期间，桌面和窗口的状态可能没有按预期更新。
+# 因此，使用 sleep 来等待桌面切换完成是不可靠的，会导致窗口位置未能正确调整。
+# 解决方案是通过检测桌面状态变化，确保 Yabai 已完成窗口的重新布局和响应。
+# 这就是为什么要写wait_for_desktop_switch函数的原因。而不是直接使用sleep。
+
 }
 
 # 检查当前桌面是否已经切换完成
