@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+# 定义记录文件的位置
+last_vscode_desktop_file="/tmp/last_vscode_desktop"
+
+# 获取当前活动窗口的信息
+current_window=$(yabai -m query --windows --window)
+
+# 获取当前活动窗口的应用程序名称
+current_app=$(echo "$current_window" | jq -r '.app')
+
+# 获取当前活动窗口所在的桌面编号
+current_desktop=$(echo "$current_window" | jq '.space')
+
+# 如果当前窗口是 VS Code，则记录桌面编号
+if [ "$current_app" = "code" ]; then
+    echo "$current_desktop" > "$last_vscode_desktop_file"
+    echo "已记录最后使用的 VS Code 桌面编号：$current_desktop"
+fi
