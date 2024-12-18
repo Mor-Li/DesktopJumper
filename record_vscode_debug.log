@@ -1,0 +1,45 @@
+2024-12-18 19:36:24 - DEBUG: 脚本开始执行
+2024-12-18 19:36:24 - DEBUG: 当前活动窗口信息：{
+	"id":20713,
+	"pid":742,
+	"app":"Code",
+	"title":"run_right_experiments.py — SuperMarioRL-Agent [SSH: volcanocloud-moli-opencompass]",
+	"scratchpad":"",
+	"frame":{
+		"x":-0.0000,
+		"y":38.0000,
+		"w":1512.0000,
+		"h":944.0000
+	},
+	"role":"AXWindow",
+	"subrole":"AXStandardWindow",
+	"root-window":true,
+	"display":1,
+	"space":9,
+	"level":0,
+	"sub-level":-20,
+	"layer":"normal",
+	"sub-layer":"below",
+	"opacity":1.0000,
+	"split-type":"none",
+	"split-child":"second_child",
+	"stack-index":0,
+	"can-move":true,
+	"can-resize":true,
+	"has-focus":true,
+	"has-shadow":true,
+	"has-parent-zoom":false,
+	"has-fullscreen-zoom":false,
+	"has-ax-reference":true,
+	"is-native-fullscreen":false,
+	"is-visible":true,
+	"is-minimized":false,
+	"is-hidden":false,
+	"is-floating":false,
+	"is-sticky":false,
+	"is-grabbed":false
+}
+2024-12-18 19:36:24 - DEBUG: 当前应用程序名称：Code
+2024-12-18 19:36:24 - DEBUG: 当前桌面编号：9
+2024-12-18 19:36:24 - DEBUG: 当前应用是 VS Code，已记录最后使用的桌面编号：9
+2024-12-18 19:36:24 - DEBUG: 脚本执行结束
