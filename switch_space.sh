@@ -11,7 +11,7 @@ if [ "$num_displays" -eq 1 ]; then
 elif [ "$num_displays" -eq 2 ]; then
     target_desktop=3  # 示例，针对双显示器的设定
 elif [ "$num_displays" -eq 3 ]; then
-    target_desktop=3  # 示例，针对三显示器的设定
+    target_desktop=12  # 示例，针对三显示器的设定
 else
     target_desktop=3  # 示例，针对更多显示器的设定
 fi
