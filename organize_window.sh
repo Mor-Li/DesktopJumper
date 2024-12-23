@@ -85,28 +85,28 @@ elif [ "$num_displays" -eq 3 ]; then
     target_desktop=1
     switch_to_target_desktop "$target_desktop"
 
-    # 第一个显示器移动4次（到第5个桌面）
-    for ((i = 1; i <= 4; i++)); do
+    # 第一个显示器移动9次（到第10个桌面）
+    for ((i = 1; i <= 9; i++)); do
         move_right
         wait_for_desktop_switch $((target_desktop + i))
     done
 
-    # 切换到第二个显示器的第一个桌面（第6个桌面）
-    target_desktop=6
-    switch_to_target_desktop "$target_desktop"
-
-    # 第二个显示器移动4次（到第10个桌面）
-    for ((i = 1; i <= 4; i++)); do
-        move_right
-        wait_for_desktop_switch $((target_desktop + i))
-    done
-
-    # 切换到第三个显示器的第一个桌面（第11个桌面）
+    # 切换到第二个显示器的第一个桌面（第11个桌面）
     target_desktop=11
     switch_to_target_desktop "$target_desktop"
 
-    # 第三个显示器移动4次（到第14个桌面）
-    for ((i = 1; i <= 4; i++)); do
+    # 第二个显示器移动1次（到第12个桌面）
+    for ((i = 1; i <= 1; i++)); do
+        move_right
+        wait_for_desktop_switch $((target_desktop + i))
+    done
+
+    # 切换到第三个显示器的第一个桌面（第13个桌面）
+    target_desktop=13
+    switch_to_target_desktop "$target_desktop"
+
+    # 第三个显示器移动3次（到第16个桌面）
+    for ((i = 1; i <= 3; i++)); do
         move_right
         wait_for_desktop_switch $((target_desktop + i))
     done
