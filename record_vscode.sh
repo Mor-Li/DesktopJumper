@@ -12,8 +12,8 @@ current_app=$(echo "$current_window" | jq -r '.app')
 # 获取当前活动窗口所在的桌面编号
 current_desktop=$(echo "$current_window" | jq '.space')
 
-# 如果当前窗口是 VS Code，则记录桌面编号
-if [ "$current_app" = "Code" ]; then
+# 如果当前窗口是 VS Code 或者 Cursor，则记录桌面编号
+if [ "$current_app" = "Code" ] || [ "$current_app" = "Cursor" ]; then
     echo "$current_desktop" > "$last_vscode_desktop_file"
-    echo "已记录最后使用的 VS Code 桌面编号：$current_desktop"
+    echo "已记录最后使用的应用程序 ($current_app) 的桌面编号：$current_desktop"
 fi
