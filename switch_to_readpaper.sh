@@ -8,7 +8,7 @@ num_displays=$(yabai -m query --displays | jq '. | length')
 
 # 根据显示器数量定义目标桌面编号
 if [ "$num_displays" -eq 1 ]; then
-    target_desktop=10  # 针对单显示器的设定，Music窗口
+    target_desktop=11  # 针对单显示器的设定，Music窗口
 elif [ "$num_displays" -eq 2 ]; then
     target_desktop=11  # 针对双显示器的设定
 elif [ "$num_displays" -eq 3 ]; then
