@@ -10,7 +10,7 @@ num_displays=$(yabai -m query --displays | jq '. | length')
 if [ "$num_displays" -eq 1 ]; then
     target_desktop=4  # 针对单显示器的设定，Chrome窗口
 elif [ "$num_displays" -eq 2 ]; then
-    target_desktop=4  # 针对双显示器的设定
+    target_desktop=11  # 针对双显示器的设定
 elif [ "$num_displays" -eq 3 ]; then
     target_desktop=11  # 针对三显示器的设定
 else
