@@ -8,6 +8,8 @@ num_displays=$(yabai -m query --displays | jq '. | length')
 if [ "$num_displays" -eq 1 ]; then
     /Users/limo/miniconda3/envs/pytorch/bin/python /Users/limo/Documents/GithubRepo/YabaiSKHD-MultiDisplay/click/click_position.py 1277 944
 elif [ "$num_displays" -eq 2 ]; then
+    # 双显示器实际上和单显示器是一样的
+    /Users/limo/miniconda3/envs/pytorch/bin/python /Users/limo/Documents/GithubRepo/YabaiSKHD-MultiDisplay/click/click_position.py 1277 944
     target_desktop=6  # 示例，针对双显示器的设定
 elif [ "$num_displays" -eq 3 ]; then
     /Users/limo/miniconda3/envs/pytorch/bin/python /Users/limo/Documents/GithubRepo/YabaiSKHD-MultiDisplay/click/click_position.py 415 -40
