@@ -14,7 +14,7 @@ declare -A keycode_map=(
 
 switch_to_target_desktop() {
     # 每次跳桌面前，先检测当前是否在vscode，用来记录在最后的vscode的桌面的位置
-    source /Users/limo/Documents/GithubRepo/DesktopJumper/record_vscode.sh
+    source /Users/moonshot/Documents/DesktopJumper/record_vscode.sh
 
     local target_desktop="$1"
     local sleep_duration="${2:-0.2}"  # 默认睡眠时间为0.2秒

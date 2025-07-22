@@ -1,0 +1,18 @@
+# DesktopJumper - 桌面切换快捷键配置
+# 快捷键说明：
+# Ctrl+E -> 第一个桌面（浏览器）
+# Ctrl+T -> 第二个桌面 
+# Option+Space -> 第三个桌面（ChatGPT）
+# Ctrl+M -> 第四个桌面（Music）
+
+# 切换到第一个桌面（浏览器）
+ctrl - e : zsh "/Users/moonshot/Documents/DesktopJumper/switch_to_chrome.sh"
+
+# 切换到第二个桌面
+ctrl - t : zsh "/Users/moonshot/Documents/DesktopJumper/switch_to_second_desktop.sh"
+
+# 切换到第三个桌面（ChatGPT）
+alt - space : zsh "/Users/moonshot/Documents/DesktopJumper/switch_space.sh"
+
+# 切换到第四个桌面（Music）
+ctrl - m : zsh "/Users/moonshot/Documents/DesktopJumper/switch_to_music.sh" 

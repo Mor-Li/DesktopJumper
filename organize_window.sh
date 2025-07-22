@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # 导入 keycode_map
-source /Users/limo/Documents/GithubRepo/DesktopJumper/keycode_map.sh
+source /Users/moonshot/Documents/DesktopJumper/keycode_map.sh
 
 # 右移到下一个桌面
 move_right() {
