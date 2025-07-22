@@ -29,15 +29,15 @@ switch_to_target_desktop() {
 
             # 切换到目标桌面
             if [ "$target_desktop" -ge 1 ] && [ "$target_desktop" -le 9 ]; then
-                # Control + 数字
-                osascript -e "tell application \"System Events\" to key code ${keycode_map[$target_desktop]} using {control down}" > /dev/null
+                # Command + 数字
+                osascript -e "tell application \"System Events\" to key code ${keycode_map[$target_desktop]} using {command down}" > /dev/null
             elif [ "$target_desktop" -eq 10 ]; then
-                # Control + 0
-                osascript -e "tell application \"System Events\" to key code ${keycode_map[0]} using {control down}" > /dev/null
+                # Command + 0
+                osascript -e "tell application \"System Events\" to key code ${keycode_map[0]} using {command down}" > /dev/null
             elif [ "$target_desktop" -ge 11 ] && [ "$target_desktop" -le 19 ]; then
-                # Control + Option + (1-9)
+                # Command + Option + (1-9)
                 local option_desktop=$((target_desktop - 10))  # 转换为 1-9 范围
-                osascript -e "tell application \"System Events\" to key code ${keycode_map[$option_desktop]} using {control down, option down}" > /dev/null
+                osascript -e "tell application \"System Events\" to key code ${keycode_map[$option_desktop]} using {command down, option down}" > /dev/null
             fi
 
             echo "Debug: Switched to space $target_desktop."
@@ -49,18 +49,18 @@ switch_to_target_desktop() {
                     # 切换回 1-9 桌面
                     key_code=${keycode_map[$previous_space]}
                     echo "Debug: Switching back to space $previous_space with key code $key_code."
-                    osascript -e "tell application \"System Events\" to key code $key_code using {control down}" > /dev/null
+                    osascript -e "tell application \"System Events\" to key code $key_code using {command down}" > /dev/null
                 elif [ "$previous_space" -eq 10 ]; then
                     # 切换回 10 桌面
                     key_code=${keycode_map[0]}
                     echo "Debug: Switching back to space $previous_space with key code $key_code."
-                    osascript -e "tell application \"System Events\" to key code $key_code using {control down}" > /dev/null
+                    osascript -e "tell application \"System Events\" to key code $key_code using {command down}" > /dev/null
                 elif [ "$previous_space" -ge 11 ] && [ "$previous_space" -le 19 ]; then
                     # 切换回 11-19 桌面
                     local option_desktop=$((previous_space - 10))  # 转换为 1-9 范围
                     key_code=${keycode_map[$option_desktop]}
-                    echo "Debug: Switching back to space $previous_space with Control + Option + key code $key_code."
-                    osascript -e "tell application \"System Events\" to key code $key_code using {control down, option down}" > /dev/null
+                    echo "Debug: Switching back to space $previous_space with Command + Option + key code $key_code."
+                    osascript -e "tell application \"System Events\" to key code $key_code using {command down, option down}" > /dev/null
                 else
                     echo "Debug: Invalid previous space or keycode not found."
                 fi
