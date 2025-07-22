@@ -1,77 +1,97 @@
 # DesktopJumper 设置指南
 
-## 快捷键配置
+## 🎯 快捷键配置
 
-本项目已为您配置了以下桌面切换快捷键：
+本项目已为您配置了以下7个桌面切换快捷键：
 
-- **Ctrl + E** → 第一个桌面（浏览器）
-- **Ctrl + T** → 第二个桌面
-- **Option + Space** → 第三个桌面（ChatGPT）
-- **Ctrl + M** → 第四个桌面（音乐应用）
+- **Ctrl + K** → 第1个桌面（主桌面：聊天软件和日程安排）
+- **Option + Space** → 第2个桌面（ChatGPT应用）
+- **Ctrl + T** → 第3个桌面（本地Cursor）
+- **Ctrl + P** → 第4个桌面（Zotero/Paper）
+- **Ctrl + X** → 第5个桌面（音乐应用）
+- **Ctrl + V** → 第6个桌面（VS Code）
+- **Ctrl + E** → 第7个桌面（浏览器）
 
-## 安装步骤
+## ✅ 安装状态
 
 1. ✅ 已安装 skhd
-2. ✅ 已创建 moonshot 分支
-3. ✅ 已配置所有脚本
-4. ✅ 已设置快捷键配置
-5. ✅ 已启动 skhd 服务
+2. ✅ 已安装 yabai
+3. ✅ 已安装 jq
+4. ✅ 已创建 moonshot 分支
+5. ✅ 已配置所有7个切换脚本
+6. ✅ 已设置快捷键配置
+7. ✅ 已启动 skhd 和 yabai 服务
 
-## 使用说明
+## 🏗️ 工作原理
 
-### 桌面布局建议
+每个快捷键触发的脚本都会：
+1. 检测当前显示器数量
+2. 发送对应的 `Cmd+数字` 组合键
+3. 实现桌面切换功能
 
-- **桌面 1**：放置浏览器应用（Chrome/Safari等）
-- **桌面 2**：用于一般工作或终端
-- **桌面 3**：放置 ChatGPT 应用
-- **桌面 4**：放置音乐应用（Apple Music/Spotify等）
+## 📱 桌面布局建议
 
-### 注意事项
+- **桌面 1**：主工作区（聊天软件如微信、钉钉，日程应用如Calendars）
+- **桌面 2**：ChatGPT 应用
+- **桌面 3**：本地开发环境（Cursor）
+- **桌面 4**：文献管理（Zotero）
+- **桌面 5**：娱乐（Apple Music/Spotify等）
+- **桌面 6**：VS Code 开发
+- **桌面 7**：网页浏览（Chrome/Safari等）
 
-1. 首次使用前，请确保 macOS 已授予相关权限：
-   - 系统偏好设置 → 安全性与隐私 → 辅助功能
-   - 添加并启用终端应用
+## 🔧 技术细节
 
-2. 如果快捷键不生效，请检查：
-   ```bash
-   # 检查 skhd 服务状态
-   brew services list | grep skhd
-   
-   # 重启 skhd 服务
-   skhd --restart-service
-   ```
+### 前提条件
+- macOS 已启用 `Cmd+1` 到 `Cmd+7` 的桌面切换快捷键
+- skhd 和 yabai 服务正在运行
+- 辅助功能权限已授予终端应用
 
-3. 调试模式（可选）：
-   ```bash
-   # 停止后台服务
-   pkill skhd
-   # 前台运行查看日志
-   skhd &
-   ```
+### 服务状态检查
+```bash
+# 检查 skhd 状态
+ps aux | grep skhd | grep -v grep
 
-## 自定义配置
+# 检查 yabai 状态
+ps aux | grep yabai | grep -v grep
+```
 
-如需修改快捷键，编辑 `~/.skhdrc` 文件：
+### 重启服务
+如果快捷键不工作，尝试重启服务：
+```bash
+# 重启 skhd
+pkill skhd
+/opt/homebrew/bin/skhd --verbose &
 
+# 重启 yabai
+yabai --restart-service
+```
+
+## 🐛 故障排除
+
+1. **快捷键不响应**：
+   - 检查系统偏好设置中的Mission Control快捷键是否启用
+   - 确认辅助功能权限
+
+2. **脚本执行失败**：
+   - 确认所有脚本文件有执行权限
+   - 检查文件路径是否正确
+
+3. **桌面切换无效**：
+   - 确认目标桌面已创建
+   - 手动测试 `Cmd+数字` 是否能正常切换
+
+## 📝 自定义配置
+
+要修改快捷键，编辑 `~/.skhdrc` 文件：
 ```bash
 nano ~/.skhdrc
 ```
 
 修改后重启 skhd 服务：
 ```bash
-skhd --restart-service
+pkill skhd && /opt/homebrew/bin/skhd --verbose &
 ```
 
-## 依赖项
+---
 
-- `yabai`：窗口管理器（需单独安装）
-- `jq`：JSON 处理工具（需单独安装）
-- `skhd`：✅ 已安装
-
-## 故障排除
-
-如果遇到问题，请检查：
-1. 脚本是否有执行权限
-2. 路径是否正确
-3. macOS 权限设置
-4. skhd 服务是否正常运行 
+🎉 **现在就试试你的新桌面切换系统吧！** 
