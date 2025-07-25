@@ -20,13 +20,13 @@ else
 
     # 根据显示器数量定义默认的目标桌面编号
     if [ "$num_displays" -eq 1 ]; then
-        target_desktop=7  # 单显示器情况下的默认桌面
+        target_desktop=6  # 单显示器情况下的默认桌面
     elif [ "$num_displays" -eq 2 ]; then
-        target_desktop=11  # 双显示器情况下的默认桌面（Local IDE）
+        target_desktop=9  # 双显示器情况下的默认桌面（Local IDE）
     elif [ "$num_displays" -eq 3 ]; then
-        target_desktop=7  # 三显示器情况下的默认桌面
+        target_desktop=11  # 三显示器情况下的默认桌面
     else
-        target_desktop=7  # 更多显示器情况下的默认桌面
+        target_desktop=6  # 更多显示器情况下的默认桌面
     fi
 fi
 

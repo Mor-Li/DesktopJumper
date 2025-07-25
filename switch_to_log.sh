@@ -6,15 +6,15 @@ source /Users/limo/Documents/GithubRepo/DesktopJumper/keycode_map.sh
 # 获取当前显示器的数量
 num_displays=$(yabai -m query --displays | jq '. | length')
 
-# 根据显示器数量定义目标桌面编号
+# 根据显示器数量定义目标桌面编号 - Log现在在浏览器space
 if [ "$num_displays" -eq 1 ]; then
-    target_desktop=2  # 针对单显示器的设定，Chrome log窗口
+    target_desktop=3  # 针对单显示器的设定，浏览器space
 elif [ "$num_displays" -eq 2 ]; then
-    target_desktop=2  # 针对双显示器的设定
+    target_desktop=8  # 针对双显示器的设定，浏览器space
 elif [ "$num_displays" -eq 3 ]; then
-    target_desktop=2  # 针对三显示器的设定
+    target_desktop=10  # 针对三显示器的设定，浏览器space
 else
-    target_desktop=2 # 针对更多显示器的设定
+    target_desktop=3 # 针对更多显示器的设定
 fi
 
 # 调用提取的函数来处理桌面切换逻辑
