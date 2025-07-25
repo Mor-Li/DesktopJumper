@@ -10,7 +10,7 @@ num_displays=$(yabai -m query --displays | jq '. | length')
 if [ "$num_displays" -eq 1 ]; then
     target_desktop=10  # 针对单显示器的设定，Music窗口
 elif [ "$num_displays" -eq 2 ]; then
-    target_desktop=8  # 针对双显示器的设定
+    target_desktop=7  # 针对双显示器的设定，音乐窗口
 elif [ "$num_displays" -eq 3 ]; then
     target_desktop=8  # 针对三显示器的设定
 else
