@@ -22,7 +22,7 @@ else
     if [ "$num_displays" -eq 1 ]; then
         target_desktop=6  # 单显示器情况下的默认桌面
     elif [ "$num_displays" -eq 2 ]; then
-        target_desktop=9  # 双显示器情况下的默认桌面（Local IDE）
+        target_desktop=8  # 双显示器情况下的默认桌面（Local IDE）
     elif [ "$num_displays" -eq 3 ]; then
         target_desktop=11  # 三显示器情况下的默认桌面
     else
