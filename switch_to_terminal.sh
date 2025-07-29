@@ -8,9 +8,9 @@ num_displays=$(yabai -m query --displays | jq '. | length')
 
 # 根据显示器数量定义目标桌面编号 - Terminal现在放在Space 1
 if [ "$num_displays" -eq 1 ]; then
-    target_desktop=1  # 针对单显示器的设定，通讯space
+    target_desktop=5  # 针对单显示器的设定，通讯space
 elif [ "$num_displays" -eq 2 ]; then
-    target_desktop=1  # 针对双显示器的设定，通讯space
+    target_desktop=8  # 针对双显示器的设定，通讯space
 elif [ "$num_displays" -eq 3 ]; then
     target_desktop=1  # 针对三显示器的设定，通讯space
 else
