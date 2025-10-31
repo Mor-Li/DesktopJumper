@@ -17,7 +17,7 @@ switch_to_target_desktop() {
     source /Users/limo/Documents/GithubRepo/DesktopJumper/record_vscode.sh
 
     local target_desktop="$1"
-    local sleep_duration="${2:-0.2}"  # 默认睡眠时间为0.2秒
+    local sleep_duration="${2:-0.001}"  # 默认睡眠时间为0.001秒
     local current_space=$(yabai -m query --spaces --space | jq -r ".index")
     # 等待指定时间
     sleep "$sleep_duration"
